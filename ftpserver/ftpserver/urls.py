@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from quick_ftp import views
+from django.conf.urls.static import static
+from django.conf import settings
+from quick_ftp.views import list_uploads
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('quick_ftp.urls')),
-]
+    path('media/uploads/', list_uploads, name='list_uploads'),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

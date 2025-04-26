@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>文件列表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .file-item:hover {
+            background-color: #f5f5f5;
+        }
+        .file-link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .file-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>上传文件列表</h1>
+{% if file_list %}
+<ul class="file-list">
+    {% for file_url in file_list %}
+    <li class="file-item">
+        <a href="{{ file_url }}" class="file-link" target="_blank">
+            {{ file_url }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>暂无上传文件</p>
+{% endif %}
+</body>
+</html>
