@@ -16,8 +16,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制项目文件
-COPY ./ftpserver /app
-COPY ./requirements.txt /app
+COPY . /app/
 
 # 安装Python依赖
 RUN pip install --no-cache-dir -r requirements.txt
@@ -30,4 +29,4 @@ RUN chmod -R 777 /app/ftpserver/quick_ftp/media/uploads
 EXPOSE 8000
 
 # 启动命令git
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "ftpserver/manage.py", "runserver", "0.0.0.0:8000"]
