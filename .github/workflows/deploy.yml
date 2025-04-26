@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: registry.cn-hongkong.aliyuncs.com/tongihttigerbreak/ftp
-  IMAGE_NAME: tongihttigerbreak/ftp
+  IMAGE_NAME: ftp-server
 
 jobs:
   build-and-deploy:
@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.ALIYUN_USERNAME }}
           password: ${{ secrets.ALIYUN_PASSWORD }}
 
-      # 4. 构建镜像（在GitHub Actions环境中）
+      # 4. 构建镜像
       - name: Build Docker image
         run: |
           docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
