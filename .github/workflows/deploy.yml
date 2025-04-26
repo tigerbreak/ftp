@@ -56,6 +56,7 @@ jobs:
 
             # 拉取最新镜像
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ftp-latest
+            echo "✅ 镜像拉取完成！"
 
             # 停止并删除旧容器
             docker stop ftp || true
@@ -64,5 +65,5 @@ jobs:
             # 启动新容器
             docker run -d \
               --name ftp \
-              -p 80:80 \
+              -p 800:8000 \
               ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ftp-latest
