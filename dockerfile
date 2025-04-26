@@ -16,17 +16,15 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制项目文件
-COPY . /app/
+COPY ./ftpserver /app
+COPY ./requirements.txt /app
 
 # 安装Python依赖
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 创建媒体文件目录
-RUN mkdir -p /app/quick_ftp/media/uploads
-
 
 # 设置权限
-RUN chmod -R 777 /app/quick_ftp/media
+RUN chmod -R 777 /app/ftpserver/quick_ftp/media/uploads
 
 # 暴露端口
 EXPOSE 8000
