@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload your file</title>
+</head>
+<body>
+<form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="file">选择要上传的文件</label>
+        <input type="file" id="file" name="uploads" multiple />
+    </div>
+    <div>
+        <button>提交</button>
+    </div>
+</form>
+</body>
+</html>
